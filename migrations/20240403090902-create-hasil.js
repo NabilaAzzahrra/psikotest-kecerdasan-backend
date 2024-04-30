@@ -2,39 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createView('Hasils', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id_user: {
-        type: Sequelize.INTEGER
-      },
-      id_question: {
-        type: Sequelize.INTEGER
-      },
-      total_score: {
-        type: Sequelize.INTEGER
-      },
-      jumlah_type: {
-        type: Sequelize.INTEGER
-      },
-      jenis_kecerdasan: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+    await queryInterface.sequelize.query(`
+    CREATE VIEW view_hasil AS
+    SELECT
+      tests.id_user AS id_user,
+      SUM(tests.score) AS total,
+      questions.id_type AS id_type,
+      types.jenis_kecerdasan AS jenis_kecerdasan
+    FROM
+      tests
+      INNER JOIN questions ON tests.id_question = questions.id
+      INNER JOIN types ON questions.id_type = types.id
+    GROUP BY
+      tests.id_user,
+      questions.id_type;
+    `);
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Hasils');
+    await queryInterface.sequelize.query(`DROP VIEW view_hasil`);
   }
 };

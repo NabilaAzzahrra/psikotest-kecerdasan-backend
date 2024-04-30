@@ -15,15 +15,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Hasil.init({
     id_user: DataTypes.INTEGER,
-    id_question: DataTypes.INTEGER,
-    total_score: DataTypes.INTEGER,
-    jumlah_type: DataTypes.INTEGER,
-    jenis_kecerdasan: DataTypes.STRING,
-
+    total: DataTypes.INTEGER,
+    id_type: DataTypes.INTEGER,
+    jenis_kecerdasan: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Hasil',
-    tableName: 'vw_answer',
+    tableName: 'view_hasil',
+    timestamps: false,
   });
   return Hasil;
 };
