@@ -3,12 +3,12 @@ const router = express.Router();
 const { Type } = require('../models');
 
 router.get('/', async (req, res) => {
-  let types = await Type.findAll();
+  const types = await Type.findAll();
   return res.json(types);
 });
 
 router.get('/:id', async (req, res) => {
-  let types = await Type.findOne({
+  const types = await Type.findOne({
       where: {
           id: req.params.id
       }
@@ -17,10 +17,10 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  let data = {
+  const data = {
       jenis_kecerdasan: req.body.jenis_kecerdasan,
   }
-  let type = await Type.create(data);
+  const type = await Type.create(data);
   return res.json({
       message: 'Berhasil disimpan',
       data: type
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:id', async (req, res) => {
-  let data = {
+  const data = {
     jenis_kecerdasan: req.body.jenis_kecerdasan,
   }
   await Type.update(data, {
@@ -36,7 +36,7 @@ router.patch('/:id', async (req, res) => {
           id: req.params.id
       }
   });
-  let type = await Type.findOne({
+  const type = await Type.findOne({
       where: {
           id: req.params.id
       }

@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:idUser', async (req, res) => {
     try {
-        let hasils = await Hasil.findOne({
+        const hasils = await Hasil.findOne({
             attributes: {
                 exclude: "id",
             },

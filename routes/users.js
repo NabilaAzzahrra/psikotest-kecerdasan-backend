@@ -3,12 +3,12 @@ const router = express.Router();
 const { User } = require('../models');
 
 router.get('/', async (req, res) => {
-  let users = await User.findAll();
+  const users = await User.findAll();
   return res.json(users);
 });
 
 router.get('/:id', async (req, res) => {
-  let users = await User.findOne({
+  const users = await User.findOne({
       where: {
           id: req.params.id
       }
@@ -17,13 +17,13 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  let data = {
+  const data = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       refresh_token: req.body.refresh_token,
   }
-  let user = await User.create(data);
+  const user = await User.create(data);
   return res.json({
       message: 'Berhasil disimpan',
       data: user
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:id', async (req, res) => {
-  let data = {
+  const data = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -42,7 +42,7 @@ router.patch('/:id', async (req, res) => {
           id: req.params.id
       }
   });
-  let user = await User.findOne({
+  const user = await User.findOne({
       where: {
           id: req.params.id
       }

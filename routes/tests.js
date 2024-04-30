@@ -3,7 +3,7 @@ const router = express.Router();
 const { Test, Question, Type } = require('../models');
 
 router.get('/', async (req, res) => {
-  let tests = await Test.findAll({
+  const tests = await Test.findAll({
     include: [
       {
         model: Question,
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  let tests = await Test.findOne({
+  const tests = await Test.findOne({
     where: {
       id: req.params.id
     }
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
 
 
 router.patch('/:id', async (req, res) => {
-  let data = {
+  const data = {
     id_question: req.body.id_question,
     score: req.body.score,
     id_user: req.body.id_user,
@@ -61,7 +61,7 @@ router.patch('/:id', async (req, res) => {
       id: req.params.id
     }
   });
-  let test = await Test.findOne({
+  const test = await Test.findOne({
     where: {
       id: req.params.id
     }
