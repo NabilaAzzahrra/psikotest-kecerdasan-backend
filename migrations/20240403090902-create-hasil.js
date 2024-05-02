@@ -5,17 +5,17 @@ module.exports = {
     await queryInterface.sequelize.query(`
     CREATE VIEW view_hasil AS
     SELECT
-      tests.id_user AS id_user,
-      SUM(tests.score) AS total,
-      questions.id_type AS id_type,
-      types.jenis_kecerdasan AS jenis_kecerdasan
+      Tests.id_user AS id_user,
+      SUM(Tests.score) AS total,
+      Questions.id_type AS id_type,
+      Types.jenis_kecerdasan AS jenis_kecerdasan
     FROM
-      tests
-      INNER JOIN questions ON tests.id_question = questions.id
-      INNER JOIN types ON questions.id_type = types.id
+      Tests
+      INNER JOIN Questions ON Tests.id_question = Questions.id
+      INNER JOIN Types ON Questions.id_type = Types.id
     GROUP BY
-      tests.id_user,
-      questions.id_type;
+      Tests.id_user,
+      Questions.id_type;
     `);
   },
   async down(queryInterface, Sequelize) {
