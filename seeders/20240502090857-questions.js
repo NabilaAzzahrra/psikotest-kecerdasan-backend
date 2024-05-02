@@ -7,7 +7,7 @@ module.exports = {
             [
                 {
                     id_type: 7,
-                    question: "Saya senang belajar tentang diri sendiri untuk mengetahui 'Who Am I?'.",
+                    question: "Saya senang belajar tentang diri sendiri untuk mengetahui Who Am I?.",
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
@@ -67,7 +67,7 @@ module.exports = {
                 },
                 {
                     id_type: 2,
-                    question: "Saya menyukai teka-teki logis seperti 'sudoku'.",
+                    question: "Saya menyukai teka-teki logis seperti sudoku.",
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
