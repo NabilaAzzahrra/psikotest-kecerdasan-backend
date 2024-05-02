@@ -1,7 +1,7 @@
 'use strict';
 
 /** @type {import('sequelize-cli')Migration} */
-moduleexports = {
+module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Questions', [
       [
