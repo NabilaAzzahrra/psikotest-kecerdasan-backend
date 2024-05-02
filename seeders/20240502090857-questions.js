@@ -7,7 +7,7 @@ module.exports = {
       [
         {
            id_type: 7,
-            question: "Saya senang belajar tentang diri sendiri untuk mengetahui 'Who Am I?'"
+            question: "Saya senang belajar tentang diri sendiri untuk mengetahui Who Am I"
         },
         {
            id_type: 3,
