@@ -8,7 +8,8 @@ module.exports = {
       Tests.id_user AS id_user,
       SUM(Tests.score) AS total,
       Questions.id_type AS id_type,
-      Types.jenis_kecerdasan AS jenis_kecerdasan
+      Types.jenis_kecerdasan AS jenis_kecerdasan,
+      Types.keterangan AS keterangan
     FROM
       Tests
       INNER JOIN Questions ON Tests.id_question = Questions.id

@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     id_user: DataTypes.INTEGER,
     total: DataTypes.INTEGER,
     id_type: DataTypes.INTEGER,
-    jenis_kecerdasan: DataTypes.STRING
+    jenis_kecerdasan: DataTypes.STRING,
+    keterangan: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Hasil',
