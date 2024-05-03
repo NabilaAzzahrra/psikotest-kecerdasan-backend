@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "lp3itasik",
+    "password": "lp3itasikmysql",
     "database": "dbo_kecerdasan",
-    "host": "localhost",
+    "host": "103.163.111.39",
     "dialect": "mysql"
   },
   "test": {
