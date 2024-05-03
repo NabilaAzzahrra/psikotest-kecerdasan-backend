@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       keterangan: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
