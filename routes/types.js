@@ -19,6 +19,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const data = {
       jenis_kecerdasan: req.body.jenis_kecerdasan,
+      keterangan: req.body.keterangan
   }
   const type = await Type.create(data);
   return res.json({
@@ -30,6 +31,7 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   const data = {
     jenis_kecerdasan: req.body.jenis_kecerdasan,
+    keterangan: req.body.keterangan
   }
   await Type.update(data, {
       where: {
