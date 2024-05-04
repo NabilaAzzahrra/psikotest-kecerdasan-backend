@@ -10,6 +10,22 @@ router.get('/', async (req, res) => {
                 exclude: "id",
             }
         });
+
+        return res.json(results);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/download', async (req, res) => {
+    try {
+        const results = await Hasil.findAll({
+            attributes: {
+                exclude: "id",
+            }
+        });
+        
         const workbook = new ExcelJS.Workbook();
         const sheet = workbook.addWorksheet('Hasil Kecerdasan');
 
@@ -36,7 +52,6 @@ router.get('/', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 
 router.get('/:idUser', async (req, res) => {
     try {
