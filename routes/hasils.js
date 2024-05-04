@@ -30,7 +30,6 @@ router.get('/', async (req, res) => {
         res.setHeader('Content-Disposition', 'attachment; filename="example.xlsx"');
 
         const buffer = await workbook.xlsx.writeBuffer();
-
         res.send(buffer);
     } catch (error) {
         console.log(error);
