@@ -10,7 +10,28 @@ router.get('/', async (req, res) => {
                 exclude: "id",
             }
         });
-        return res.json(results);
+        const workbook = new ExcelJS.Workbook();
+        const sheet = workbook.addWorksheet('Hasil Kecerdasan');
+
+        sheet.addRow(['No.','Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan']);
+
+        results.forEach((result, index) => {
+            sheet.addRow([
+                index + 1,
+                `${result.school}`,
+                `${result.classes}`,
+                `${result.name_user}`,
+                `${result.phone}`,
+                result.jenis_kecerdasan
+            ]);
+        });
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="example.xlsx"');
+
+        const buffer = await workbook.xlsx.writeBuffer();
+
+        res.send(buffer);
     } catch (error) {
         console.log(error);
         res.status(500).send('Internal Server Error');
