@@ -1,18 +1,44 @@
 const express = require('express');
 const router = express.Router();
+const ExcelJS = require('exceljs');
 const { Hasil } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const hasils = await Hasil.findAll({
+        const results = await Hasil.findAll({
             attributes: {
                 exclude: "id",
             }
         });
-        return res.json(hasils);
+        const workbook = new ExcelJS.Workbook();
+        const sheet = workbook.addWorksheet('Hasil Kecerdasan');
+
+        // Add some dummy data to the sheet
+        sheet.addRow(['No.','Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan']);
+
+        results.forEach((result, index) => {
+            sheet.addRow([
+                index + 1,
+                `${result.school}`,
+                `${result.classes}`,
+                `${result.name_user}`,
+                `${result.phone}`,
+                result.jenis_kecerdasan
+            ]);
+        });
+
+        // Set content type and disposition
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="example.xlsx"');
+
+        // Save workbook to a buffer
+        const buffer = await workbook.xlsx.writeBuffer();
+
+        // Send the buffer as response
+        res.send(buffer);
     } catch (error) {
-        console.error('Error:', error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        console.log(error);
+        res.status(500).send('Internal Server Error');
     }
 });
 

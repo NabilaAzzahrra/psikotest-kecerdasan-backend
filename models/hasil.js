@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Hasil.init({
     id_user: DataTypes.INTEGER,
+    name_user: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    school: DataTypes.STRING,
+    classes: DataTypes.STRING,
     total: DataTypes.INTEGER,
     id_type: DataTypes.INTEGER,
     jenis_kecerdasan: DataTypes.STRING,
