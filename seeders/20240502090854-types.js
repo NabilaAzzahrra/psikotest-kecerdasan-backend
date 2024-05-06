@@ -42,6 +42,11 @@ module.exports = {
         keterangan: 'Gambaran Kecerdasan: Kesadaran diri, perenungan diri, objektivitas diri, kemampuan untuk mengerti diri sendiri, hubungan diri sendiri dengan dunia dan kebutuhan dan reaksi terhadap perubahan. Peran, kecenderungan dan potensi khusus: Orang yang aktif dalam perubahan pemikiran, kepercayaan dan sikap dalam hubungannya dengan situasi dirinya, dan orang lain. Hal ini ada hubungannya dengan teori Maslow, tingkat aktualisasi diri dan hampir sama dengan kecerdasan emaosi EQ. Tugas, kegiatan, atau test yang sesuai: Merumuskan tujuan hidup dan perubahan pribadi untuk mencapai tujuan tersebut (biasanya tidak diungkapkan pada orang lain), mempertimbangkan Johari Window dirinya, dan pilihan untuk perbaikan diri, merumuskan hubungan dirinya dalam model kecerdasan emosi. Gaya belajar yang dipilih: Refleksi diri, penemuan jati diri.',
         createdAt: new Date(),
         updatedAt: new Date(),
+      }, {
+        jenis_kecerdasan: 'Eksistensial',
+        keterangan: 'Gambaran Kecerdasan: Kesadaran diri, perenungan diri, objektivitas diri, kemampuan untuk mengerti diri sendiri, hubungan diri sendiri dengan dunia dan kebutuhan dan reaksi terhadap perubahan. Peran, kecenderungan dan potensi khusus: Orang yang aktif dalam perubahan pemikiran, kepercayaan dan sikap dalam hubungannya dengan situasi dirinya, dan orang lain. Hal ini ada hubungannya dengan teori Maslow, tingkat aktualisasi diri dan hampir sama dengan kecerdasan emaosi EQ. Tugas, kegiatan, atau test yang sesuai: Merumuskan tujuan hidup dan perubahan pribadi untuk mencapai tujuan tersebut (biasanya tidak diungkapkan pada orang lain), mempertimbangkan Johari Window dirinya, dan pilihan untuk perbaikan diri, merumuskan hubungan dirinya dalam model kecerdasan emosi. Gaya belajar yang dipilih: Refleksi diri, penemuan jati diri.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       }
     ], {});
   },

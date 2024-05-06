@@ -3,10 +3,11 @@
 /** @type {import('sequelize-cli')Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.bulkInsert('Questions', [
+        await queryInterface.bulkInsert('Questions', 
+        [
             {
                 id_type: 7,
-                question: "Saya senang belajar tentang diri sendiri untuk mengetahui Who Am I",
+                question: "Saya senang belajar tentang diri sendiri untuk mengetahui Who Am I?",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -41,6 +42,12 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Saya suka memikirkan bagaimana planet ini tercipta",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 4,
                 question: "Koordinasi fisik saya selalu bagus",
                 createdAt: new Date(),
@@ -65,6 +72,12 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Saya memiliki keahlian mendeteksi, memimpikan, dan merancang urusan yang besar",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 2,
                 question: "Saya menyukai teka-teki logis seperti sudoku",
                 createdAt: new Date(),
@@ -72,7 +85,7 @@ module.exports = {
             },
             {
                 id_type: 7,
-                question: "Saya senang bermeditasi/bertafakur untuk menjernihkan pikiran agar merasa lebih tenang, nyaman dan produktif",
+                question: "Saya senang bermeditasi/bertafakur untuk menjernihkan pikiran agar merasa lebih tenang, nyaman & produktif",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -115,6 +128,12 @@ module.exports = {
             {
                 id_type: 6,
                 question: "Saya orang yang sangat ramah dan saya senang berkumpul dengan orang lain",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
+                id_type: 8,
+                question: "Saya belajar mengambil hikmah dari suatu peristiwa",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -173,8 +192,14 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Kalau saya tidak boleh bohong, guru pun tidak boleh bohong",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 2,
-                question: "Menurut saya, aritmatika mental itu mudah Aritmatika mental adalah proses melakukan perhitungan matematis di kepala tanpa penggunaan metode mental, seperti visualisasi, menghafal, dan pengenalan pola untuk memecahkan masalah matematika",
+                question: "Menurut saya, aritmatika mental itu mudah, Aritmatika mental adalah proses melakukan perhitungan matematis di kepala tanpa penggunaan metode mental, seperti visualisasi, menghafal, dan pengenalan pola untuk memecahkan masalah matematika",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -199,6 +224,12 @@ module.exports = {
             {
                 id_type: 1,
                 question: "Saya menikmati debat dan diskusi",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
+                id_type: 8,
+                question: "Saya ahli dalam menempatkan diri",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -235,6 +266,12 @@ module.exports = {
             {
                 id_type: 3,
                 question: "Saya senang memutar musik ketika mengerjakan kegiatan apapun",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
+                id_type: 8,
+                question: "Saya cenderung mengutamakan kepentingan, keyakinan atau agama",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -299,6 +336,12 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Saya selalu berupaya menempatkan diri  di setiap situasi apapun dan di lingkungan sekitar",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 1,
                 question: "Saya seringkali bicara dengan diri sendiri – dengan suara keras ataupun hanya dalam hati saja",
                 createdAt: new Date(),
@@ -329,6 +372,12 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Saya orang yang sangat peka",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 7,
                 question: "Saya selalu tahu perasaan saya sendiri",
                 createdAt: new Date(),
@@ -355,6 +404,12 @@ module.exports = {
             {
                 id_type: 5,
                 question: "Pelajaran kesayangan saya di sekolah adalah kesenian",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
+                id_type: 8,
+                question: "Ketika emosi saya dapat menguasai diri sendiri",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
@@ -419,13 +474,19 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
+                id_type: 8,
+                question: "Saya menyelesaikan sesuatu dengan berkepala dingin",
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
+            {
                 id_type: 6,
                 question: "Teman-teman saya selalu mendatangi saya untuk dukungan emosional ataupun nasehat",
                 createdAt: new Date(),
                 updatedAt: new Date(),
             }
-
-        ], {});
+        ],        
+        {});
     },
 
     async down(queryInterface, Sequelize) {
