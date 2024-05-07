@@ -55,7 +55,7 @@ router.get('/download', async (req, res) => {
 
 router.get('/:idUser', async (req, res) => {
     try {
-        const hasils = await Hasil.findOne({
+        const hasils = await Hasil.findAll({
             attributes: {
                 exclude: "id",
             },
