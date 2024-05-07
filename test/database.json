@@ -1,0 +1,13 @@
+{
+  "Types": [
+    {
+      "jenis_kecerdasan": "Logis-Matematis",
+      "keterangan": "lorem ipsum aja. Kata Nabil.",
+      "jurusan": "IPA,IPS"
+    },{
+      "jenis_kecerdasan": "Intrapersonal",
+      "keterangan": "lorem ipsum aja. Kata Nabil.",
+      "jurusan": "IPS,Bahasa"
+    }
+  ]
+}

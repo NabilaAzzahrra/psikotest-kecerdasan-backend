@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Halo Nabil, jurusan kamu: <span id="result"></span></p>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const getResult = async () => {
+      await axios.get(`http://localhost:3000/Types`)
+      .then((response) => {
+        const resultOne = response.data[0];
+        const resultTwo = response.data[1];
+
+        const jurusanOne = resultOne.jurusan.split(',');
+        const jurusanTwo = resultTwo.jurusan.split(',');
+
+        if(jurusanOne.length == 1 || jurusanTwo.length == 1){
+          if(jurusanOne.length == 1){
+            document.getElementById('result').innerText = jurusanOne[0];
+          }
+          if(jurusanTwo.length == 1){
+            document.getElementById('result').innerText = jurusanTwo[0];
+          }
+        } else {
+          let result = [];
+          for (const jurusan of jurusanOne) {
+            if(jurusanTwo.includes(jurusan)){
+              result.push(jurusan);
+            }
+          }
+          document.getElementById('result').innerText = result[0];
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+    getResult();
+  </script>
+</body>
+</html>
