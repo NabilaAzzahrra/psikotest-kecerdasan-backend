@@ -44,7 +44,12 @@ module.exports = {
         updatedAt: new Date(),
       }, {
         jenis_kecerdasan: 'Eksistensial',
-        keterangan: 'Gambaran Kecerdasan: Kesadaran diri, perenungan diri, objektivitas diri, kemampuan untuk mengerti diri sendiri, hubungan diri sendiri dengan dunia dan kebutuhan dan reaksi terhadap perubahan. Peran, kecenderungan dan potensi khusus: Orang yang aktif dalam perubahan pemikiran, kepercayaan dan sikap dalam hubungannya dengan situasi dirinya, dan orang lain. Hal ini ada hubungannya dengan teori Maslow, tingkat aktualisasi diri dan hampir sama dengan kecerdasan emaosi EQ. Tugas, kegiatan, atau test yang sesuai: Merumuskan tujuan hidup dan perubahan pribadi untuk mencapai tujuan tersebut (biasanya tidak diungkapkan pada orang lain), mempertimbangkan Johari Window dirinya, dan pilihan untuk perbaikan diri, merumuskan hubungan dirinya dalam model kecerdasan emosi. Gaya belajar yang dipilih: Refleksi diri, penemuan jati diri.',
+        keterangan: 'Gambaran Kecerdasan: Kepekaan pada lingkungan sekitar, ahli dalam menjawab persoalan-persoalan terdalam keberadaan atau eksistensi manusia, cenderung berani dalam menyatakan keyakinan, memperjuangkan kebenaran, berupaya menempatkan diri,  danmemiliki keahlian mendeteksi, memimpikan urusan besar. Peran, kecenderungan dan potensi khusus: akademisi,  teolog, atau pemikir teori. Tugas, kegiatan, atau test yang sesuai: Menunjukkan kepekaan; menjawab persoalan-persoalan terdalam keberadaan atau eksistensi manusia; mempersoalkan kebenaran suatu pernyataan; memiliki pengalaman yang mendalam terkait cinta kepada sesama dan seni. Gaya belajar yang dipilih: Berfikir , bertanya eksistensi suatu hal/pernyataan, berdiskusi, merancang urusan yang besar.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }, {
+        jenis_kecerdasan: 'Naturalis',
+        keterangan: 'Gambaran Kecerdasan: Memiliki inteligensi lingkungan yang kuat mampu menikmati alam sekitar, mampu mengembangkan pengetahuan tentang lingkungan. Peran, kecenderungan dan potensi khusus: Dokter hewan, perkebunan, kehutanan, kelautan, insinyur pertanian, ahli farmasi tentang obat alami dan obat yang lain, ahli geodesi, geografi, dan ahli lingkungan. Tugas, kegiatan, atau test yang sesuai: Menunjukan kekuatan rasa; mengunjungi alam;  observasi terkait lingkungan; memilah-milah hubungan antara beberapa flora / fauna (spesies/jenis). Gaya belajar yang dipilih: Berpikir, observasi/mengamati flora dan fauna, praktikum.',
         createdAt: new Date(),
         updatedAt: new Date(),
       }
