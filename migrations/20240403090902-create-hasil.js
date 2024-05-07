@@ -13,6 +13,7 @@ module.exports = {
         user_results.total AS total,
         user_results.id_type,
         user_results.jenis_kecerdasan,
+        user_results.jurusan,
         user_results.keterangan
     FROM
         (
@@ -25,6 +26,7 @@ module.exports = {
                 SUM(Tests.score) AS total,
                 Questions.id_type AS id_type,
                 Types.jenis_kecerdasan AS jenis_kecerdasan,
+                Types.jurusan AS jurusan,
                 Types.keterangan AS keterangan,
                 ROW_NUMBER() OVER (PARTITION BY Tests.id_user ORDER BY SUM(Tests.score) DESC) AS row_num
             FROM
