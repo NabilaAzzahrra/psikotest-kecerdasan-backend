@@ -15,6 +15,9 @@ module.exports = {
       keterangan: {
         type: Sequelize.TEXT
       },
+      jurusan: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

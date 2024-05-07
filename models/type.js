@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Type.init({
     jenis_kecerdasan: DataTypes.STRING,
-    keterangan: DataTypes.TEXT
+    keterangan: DataTypes.TEXT,
+    jurusan: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Type',
