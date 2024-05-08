@@ -25,11 +25,36 @@ router.get('/download', async (req, res) => {
                 exclude: "id",
             }
         });
-        
+
         const workbook = new ExcelJS.Workbook();
         const sheet = workbook.addWorksheet('Hasil Kecerdasan');
 
-        sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan']);
+        sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan 1', 'Kecerdasan 2', 'Jurusan']);
+
+        const resultOne = results[0];
+        const resultTwo = results[1];
+
+        const jurusanOne = resultOne.jurusan.split(',');
+        const jurusanTwo = resultTwo.jurusan.split(',');
+
+        let jurusan = null;
+
+        if (jurusanOne.length == 1 || jurusanTwo.length == 1) {
+            if (jurusanOne.length == 1) {
+                jurusan = jurusanOne[0];
+            }
+            if (jurusanTwo.length == 1) {
+                jurusan = jurusanTwo[0];
+            }
+        } else {
+            let result = [];
+            for (const jurusan of jurusanOne) {
+                if (jurusanTwo.includes(jurusan)) {
+                    result.push(jurusan);
+                }
+            }
+            jurusan = result[0];
+        }
 
         results.forEach((result, index) => {
             sheet.addRow([
@@ -38,7 +63,9 @@ router.get('/download', async (req, res) => {
                 `${result.classes}`,
                 `${result.name_user}`,
                 `${result.phone}`,
-                result.jenis_kecerdasan
+                resultOne.jenis_kecerdasan,
+                resultTwo.jenis_kecerdasan,
+                jurusan,
             ]);
         });
 
