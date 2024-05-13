@@ -31,41 +31,66 @@ router.get('/download', async (req, res) => {
 
         sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan 1', 'Kecerdasan 2', 'Jurusan']);
 
-        const resultOne = results[0];
-        const resultTwo = results[1];
+        const groupedResults = [];
 
-        const jurusanOne = resultOne.jurusan.split(',');
-        const jurusanTwo = resultTwo.jurusan.split(',');
+        results.forEach((result) => {
+            const hasil = groupedResults.find((group) => group.id_user == result.id_user);
+            if (hasil) {
+                hasil.agilities.push({
+                    jenis_kecerdasan: result.jenis_kecerdasan,
+                    jurusan: result.jurusan
+                });
 
-        let jurusan = null;
+                const jurusanOne = hasil.agilities[0].jurusan.split(',');
+                const jurusanTwo = hasil.agilities[1].jurusan.split(',');
 
-        if (jurusanOne.length == 1 || jurusanTwo.length == 1) {
-            if (jurusanOne.length == 1) {
-                jurusan = jurusanOne[0];
-            }
-            if (jurusanTwo.length == 1) {
-                jurusan = jurusanTwo[0];
-            }
-        } else {
-            let result = [];
-            for (const jurusan of jurusanOne) {
-                if (jurusanTwo.includes(jurusan)) {
-                    result.push(jurusan);
+                let jurusan = null;
+                
+                if (jurusanOne.length == 1 || jurusanTwo.length == 1) {
+                    if (jurusanOne.length == 1) {
+                        jurusan = jurusanOne[0];
+                    }
+                    if (jurusanTwo.length == 1) {
+                        jurusan = jurusanTwo[0];
+                    }
+                } else {
+                    let result = [];
+                    for (const jurusan of jurusanOne) {
+                        if (jurusanTwo.includes(jurusan)) {
+                            result.push(jurusan);
+                        }
+                    }
+                    jurusan = result[0];
                 }
-            }
-            jurusan = result[0];
-        }
 
-        results.forEach((result, index) => {
+                hasil.recommendation = jurusan;
+
+            } else {
+                groupedResults.push({
+                    id_user: result.id_user,
+                    name: result.name_user,
+                    phone: result.phone,
+                    school: result.school,
+                    classes: result.classes,
+                    agilities: [{
+                        jenis_kecerdasan: result.jenis_kecerdasan,
+                        jurusan: result.jurusan
+                    }],
+                    recommendation: 'Tidak diketahui'
+                });
+            }
+        });
+
+        groupedResults.forEach((groupedResult, index) => {
             sheet.addRow([
                 index + 1,
-                `${result.school}`,
-                `${result.classes}`,
-                `${result.name_user}`,
-                `${result.phone}`,
-                resultOne.jenis_kecerdasan,
-                resultTwo.jenis_kecerdasan,
-                jurusan,
+                `${groupedResult.school}`,
+                `${groupedResult.classes}`,
+                `${groupedResult.name}`,
+                `${groupedResult.phone}`,
+                `${groupedResult.agilities[0].jenis_kecerdasan}`,
+                `${groupedResult.agilities[1].jenis_kecerdasan}`,
+                `${groupedResult.recommendation}`,
             ]);
         });
 
