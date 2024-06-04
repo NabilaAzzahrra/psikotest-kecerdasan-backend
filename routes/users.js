@@ -1,10 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
+const { default: axios } = require('axios');
 
 router.get('/', async (req, res) => {
     const users = await User.findAll();
     return res.json(users);
+});
+
+router.get('/sync', async (req, res) => {
+    try {
+        const users = await User.findAll();
+        const responseClasses = await axios.get(`http://localhost:3000/users/class`);
+        const applicants = responseClasses.data;
+        console.log(applicants);
+
+        users.forEach(async (user, index) => {
+            const result = applicants.find((applicant) => applicant.id == user.id_user);
+            if(result){
+                await User.update({
+                    classes: result.class
+                },{
+                    where: {
+                        id_user: user.id_user
+                    }
+                })
+                console.log(result.class);
+            }
+        });
+
+        return res.json({
+            users: users,
+        })
+
+    } catch (error) {
+        console.error('Error in /sync route:', error);
+        return res.status(500).json('An error occurred');
+    }
 });
 
 router.get('/:idUser', async (req, res) => {
