@@ -29,7 +29,8 @@ router.get('/download', async (req, res) => {
         const workbook = new ExcelJS.Workbook();
         const sheet = workbook.addWorksheet('Hasil Kecerdasan');
 
-        sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan 1', 'Kecerdasan 2', 'Jurusan']);
+        // sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan 1', 'Kecerdasan 2', 'Jurusan']);
+        sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan']);
 
         const groupedResults = [];
 
@@ -74,7 +75,7 @@ router.get('/download', async (req, res) => {
                     classes: result.classes,
                     agilities: [{
                         jenis_kecerdasan: result.jenis_kecerdasan,
-                        jurusan: result.jurusan
+                        // jurusan: result.jurusan
                     }],
                     recommendation: 'Tidak diketahui'
                 });
@@ -89,7 +90,7 @@ router.get('/download', async (req, res) => {
                 `${groupedResult.name}`,
                 `${groupedResult.phone}`,
                 `${groupedResult.agilities[0].jenis_kecerdasan}`,
-                `${groupedResult.agilities[1].jenis_kecerdasan}`,
+                // `${groupedResult.agilities[1].jenis_kecerdasan}`,
                 `${groupedResult.recommendation}`,
             ]);
         });
