@@ -5,7 +5,7 @@ const {
   DB_NAME,
   DB_HOST,
   DB_DIALECT
-} = require('dotenv');
+} = process.env;
 
 module.exports = {
   "development": {
