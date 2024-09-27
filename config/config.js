@@ -1,10 +1,19 @@
-{
+require('dotenv').config();
+const {
+  DB_USERNAME,
+  DB_PASSWORD,
+  DB_NAME,
+  DB_HOST,
+  DB_DIALECT
+} = require('dotenv');
+
+module.exports = {
   "development": {
-    "username": "root",
-    "password": "lp3itasikmysql",
-    "database": "dbo_kecerdasan",
-    "host": "103.163.111.39",
-    "dialect": "mysql"
+    "username": DB_USERNAME,
+    "password": DB_PASSWORD,
+    "database": DB_NAME,
+    "host": DB_HOST,
+    "dialect": DB_DIALECT
   },
   "test": {
     "username": "root",
