@@ -4,7 +4,8 @@ const {
   DB_PASSWORD,
   DB_NAME,
   DB_HOST,
-  DB_DIALECT
+  DB_DIALECT,
+  DB_PORT
 } = process.env;
 
 module.exports = {
@@ -13,7 +14,8 @@ module.exports = {
     "password": DB_PASSWORD,
     "database": DB_NAME,
     "host": DB_HOST,
-    "dialect": DB_DIALECT
+    "dialect": DB_DIALECT,
+    "port": DB_PORT,
   },
   "test": {
     "username": "root",

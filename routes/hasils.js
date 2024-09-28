@@ -5,44 +5,42 @@ const { Hasil } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const results = await Hasil.findAll({
+        const response = await Hasil.findAll({
             attributes: {
                 exclude: "id",
             }
         });
 
-        return res.json(results);
+        return res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal Server Error');
+        return res.json({
+            message: error.message
+        });
     }
 });
 
 router.get('/download', async (req, res) => {
     try {
-        const results = await Hasil.findAll({
+        const response = await Hasil.findAll({
             attributes: {
                 exclude: "id",
             }
         });
-        
+
         const workbook = new ExcelJS.Workbook();
         const sheet = workbook.addWorksheet('Hasil Kecerdasan');
-        
+
         sheet.addRow(['No.', 'Sekolah', 'Kelas', 'Nama Lengkap', 'No. Telpon', 'Kecerdasan']);
-        
+
         const groupedResults = [];
-        
-        results.forEach((result) => {
+
+        response.forEach((result) => {
             const hasil = groupedResults.find((group) => group.id_user == result.id_user);
             if (hasil) {
                 hasil.agilities.push({
                     jenis_kecerdasan: result.jenis_kecerdasan,
                 });
-        
-                // Assuming you want to keep only the first intelligence type
                 hasil.agilities = [hasil.agilities[0]];
-        
             } else {
                 groupedResults.push({
                     id_user: result.id_user,
@@ -56,7 +54,7 @@ router.get('/download', async (req, res) => {
                 });
             }
         });
-        
+
         groupedResults.forEach((groupedResult, index) => {
             sheet.addRow([
                 index + 1,
@@ -67,22 +65,22 @@ router.get('/download', async (req, res) => {
                 `${groupedResult.agilities[0].jenis_kecerdasan}`,
             ]);
         });
-        
+
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', 'attachment; filename="example.xlsx"');
-        
+
         const buffer = await workbook.xlsx.writeBuffer();
         res.send(buffer);
-        
     } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal Server Error');
+        return res.json({
+            message: error.message
+        });
     }
 });
 
 router.get('/:idUser', async (req, res) => {
     try {
-        const hasils = await Hasil.findAll({
+        const response = await Hasil.findOne({
             attributes: {
                 exclude: "id",
             },
@@ -90,10 +88,11 @@ router.get('/:idUser', async (req, res) => {
                 id_user: req.params.idUser,
             }
         });
-        return res.json(hasils);
+        return res.status(200).json(response);
     } catch (error) {
-        console.error('Error:', error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.json({
+            message: error.message
+        });
     }
 });
 

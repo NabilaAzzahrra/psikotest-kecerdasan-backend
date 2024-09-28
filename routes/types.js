@@ -3,63 +3,93 @@ const router = express.Router();
 const { Type } = require('../models');
 
 router.get('/', async (req, res) => {
-  const types = await Type.findAll();
-  return res.json(types);
+  try {
+    const response = await Type.findAll();
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.json({
+      message: error.message
+    });
+  }
 });
 
 router.get('/:id', async (req, res) => {
-  const types = await Type.findOne({
+  try {
+    const response = await Type.findOne({
       where: {
-          id: req.params.id
+        id: req.params.id
       }
-  });
-  return res.json(types);
+    });
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.json({
+      message: error.message
+    });
+  }
 });
 
 router.post('/', async (req, res) => {
-  const data = {
+  try {
+    const data = {
       jenis_kecerdasan: req.body.jenis_kecerdasan,
       keterangan: req.body.keterangan,
       jurusan: req.body.jurusan
-  }
-  const type = await Type.create(data);
-  return res.json({
+    }
+    const response = await Type.create(data);
+    return res.status(200).json({
       message: 'Berhasil disimpan',
-      data: type
-  });
+      data: response
+    });
+  } catch (error) {
+    return res.json({
+      message: error.message
+    });
+  }
 });
 
 router.patch('/:id', async (req, res) => {
-  const data = {
-    jenis_kecerdasan: req.body.jenis_kecerdasan,
-    keterangan: req.body.keterangan,
-    jurusan: req.body.jurusan
-  }
-  await Type.update(data, {
+  try {
+    const data = {
+      jenis_kecerdasan: req.body.jenis_kecerdasan,
+      keterangan: req.body.keterangan,
+      jurusan: req.body.jurusan
+    }
+    await Type.update(data, {
       where: {
-          id: req.params.id
+        id: req.params.id
       }
-  });
-  const type = await Type.findOne({
+    });
+    const response = await Type.findOne({
       where: {
-          id: req.params.id
+        id: req.params.id
       }
-  });
-  return res.json({
+    });
+    return res.status(200).json({
       message: 'Berhasil diubah',
-      data: type
-  });
+      data: response
+    });
+  } catch (error) {
+    return res.json({
+      message: error.message
+    });
+  }
 });
 
 router.delete('/:id', async (req, res) => {
-  await Type.destroy({
+  try {
+    await Type.destroy({
       where: {
-          id: req.params.id
+        id: req.params.id
       }
-  });
-  return res.json({
-      message:'BERHASIL DIHAPUS'
-  });
+    });
+    return res.status(200).json({
+      message: 'Berhasil dihapus'
+    });
+  } catch (error) {
+    return res.json({
+      message: error.message
+    });
+  }
 });
 
 module.exports = router;
