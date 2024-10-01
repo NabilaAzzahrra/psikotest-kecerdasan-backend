@@ -80,7 +80,7 @@ router.get('/download', async (req, res) => {
 
 router.get('/:idUser', async (req, res) => {
     try {
-        const response = await Hasil.findOne({
+        const response = await Hasil.findAll({
             attributes: {
                 exclude: "id",
             },

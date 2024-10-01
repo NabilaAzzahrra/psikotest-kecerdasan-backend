@@ -25,25 +25,24 @@ module.exports = {
     GROUP BY
         Tests.id_user,
         Questions.id_type
-)
-SELECT
-    id_user,
-    name_user,
-    phone,
-    school,
-    classes,
-    total,
-    id_type,
-    jenis_kecerdasan,
-    jurusan,
-    keterangan
-FROM
-    RankedResults
-WHERE
-    row_num = 1
-ORDER BY
-    total DESC;
-
+    )
+    SELECT
+        id_user,
+        name_user,
+        phone,
+        school,
+        classes,
+        total,
+        id_type,
+        jenis_kecerdasan,
+        jurusan,
+        keterangan
+    FROM
+        RankedResults
+    WHERE
+        row_num = 1
+    ORDER BY
+        total DESC;
     `);
   },
   async down(queryInterface, Sequelize) {
