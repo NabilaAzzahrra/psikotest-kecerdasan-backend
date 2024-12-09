@@ -80,7 +80,7 @@ router.get('/download', async (req, res) => {
 
 router.get('/:idUser', async (req, res) => {
     try {
-        const response = await Hasil.findAll({
+        const response = await Hasil.findOne({
             attributes: {
                 exclude: "id",
             },
@@ -88,6 +88,11 @@ router.get('/:idUser', async (req, res) => {
                 id_user: req.params.idUser,
             }
         });
+        if(!response){
+            return res.status(404).json({
+                message: "Data not found"
+            });
+        }
         return res.status(200).json(response);
     } catch (error) {
         return res.json({
